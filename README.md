@@ -29,6 +29,12 @@ Input: 21, 400, 8, -3, 77, 99, -16, 55, 111, -36, 28
 
 Expected output: -36, -16, -3, 8, 21, 28, 55, 77, 99, 111, 400
 
+ def sort_numbers(numbers): //define the sort function - and the variable
+    return sorted(numbers)
+
+numbers = [21, 400, 8, -3, 77, 99, -16, 55, 111, -36, 28]
+sorted_numbers = sort_numbers(numbers)
+print(sorted_numbers)
 Note:
 - You are not allowed to use language library function to solve the problem.
 - **Bonus**: Prepare space-time complexity analysis for your solution.
@@ -43,6 +49,22 @@ Given a list of ordered numbers from 1 to 100, perform the following actions
 Input: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ..., 100
 
 Expected output: 1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, FizzBuzz, 16, ..., 100
+do{
+int a = 0;
+printf("Enter numbers")
+scanf("%d",&a);
+}while(a <100);
+for(int i=0; i<100; i++){
+if(a %3 ==0)
+printf("\nFizz")
+else if(a %5 ==0)
+printf("Buzz");
+else if(a %5 == 0 && a%3 ==0)
+printf("Fizzbuzz"):
+else{
+break();
+}
+}
 
 ### Problem 3 - Fibonacci Sequence
 
@@ -98,7 +120,8 @@ Note:
 ### Problem 7 - Square Root
 
 Write a function that calculates and returns the square root of a non-negative integer `x`. You can safely assume `x` is a perfect square, such as 4, 9, 16, 25, 36, and so on.
-
+int x = 0;
+printf
 Note:
 - You are not allowed to use any built-in square root function or language library function to solve the problem.
 - **Bonus**: Prepare space-time complexity analysis for your solution.
