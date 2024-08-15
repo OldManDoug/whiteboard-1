@@ -200,8 +200,34 @@ Note:
 
 Write a function that calculates and returns the square root of a non-negative integer `x`. You can safely assume `x` is a perfect square, such as 4, 9, 16, 25, 36, and so on.
 //solution
-int x = 0;
-printf("Square root of :", x/x);
+int sqrt(int x) {
+    if (x < 0) {
+        // Handle negative numbers
+        throw std::runtime_error("Cannot calculate square root of a negative number");
+    } else if (x == 0 || x == 1) {
+        // Handle 0 and 1
+        return x;
+    }
+
+    int start = 1;
+    int end = x;
+    int ans = 0;
+
+    while (start <= end) {
+        int mid = start + (end - start) / 2; // Avoid overflow
+        long long square = (long long)mid * mid; // Avoid overflow
+        if (square == x) {
+            return mid;
+        } else if (square < x) {
+            start = mid + 1;
+            ans = mid;
+        } else {
+            end = mid - 1;
+        }
+    }
+
+    return ans;
+}
 Note:
 - You are not allowed to use any built-in square root function or language library function to solve the problem.
 - **Bonus**: Prepare space-time complexity analysis for your solution.
@@ -242,7 +268,18 @@ Example 6:
 - Input: "Conversation", "Voices, rant on"
 - Expected output: true
 - Explanation: After removing whitespace and punctuation and ignore case sensitivity, both strings contain the same characters "c", "o", "n", "v", "e", "r", "s", "a", "t", "i", and "n" and have the same count for each character. Hence, they are anagrams of each other, even though the second string has different words, whitespaces, punctuation and cases.
-
+//solution
+char a,b;
+printf("Enter a word");
+scanf("%s",&a);
+rewind(stdin);
+printf("Enter another word");
+scanf("%s",&b);
+if(strcmp(a,b == 0){  //checks each letter for similarities
+return true;
+else{
+return false;
+}
 Note: 
 - Ignore case sensitivity, so "Listen" and "silent" should be considered anagrams.
 - Ignore whitespace and punctuation from the anagram check.
@@ -295,6 +332,10 @@ Example 3:
 Example 4:
 - Input: Start = E, End = D
 - Expected output: True (E --> F --> B --> D)
+
+'\
+
+char a,b,c,d,e,f,g;
 
 Note:
 - You are free to propose any data structure to represent the directed graph.
