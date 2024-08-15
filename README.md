@@ -71,7 +71,20 @@ break();
 Write a function that generate Fibonacci sequence using `recursion` technique. Allow the user to specify the number of Fibonacci sequence elements to generate.
 
 Expected output: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...
-
+// in Java
+class Fibbonaci{
+public static void main(String [] args){
+int n1 = 0, n2=1, n3,count = 0; //
+System.out.print(n1+""+n2); 
+System.out.printf("Enter the amount of  numbers needed",count); //let user input the numbers needed
+for(int i=0; i<count; ++i){
+n3 = n1+n2;
+System.out.print(""+n3);
+n1 = n2;
+n2=n3;
+}
+}
+}
 Note:
 - Fibonacci sequence is a sequence in which each number is the sum of the two preceding ones.
 - **Bonus**: How would you handle preventing a stack overflow exception when generating a large sequence?
@@ -86,6 +99,9 @@ List 2: 8, 7, 6, 9, 4, 5
 
 Expected output: 4, 5, 6
 
+if strcmp(l1 == l2){
+
+}
 Note:
 - You are not allowed to use language library function to solve the problem.
 - **Bonus**: Prepare space-time complexity analysis for your solution.
@@ -100,6 +116,18 @@ List 2: 8, 7, 6, 9, 4, 5
 
 Expected output: 1, 2, 3, 7, 8, 9
 
+//output
+int array[]= {4,5,2,3,1,6};
+int array2[]={8,7,6,9,4,5};
+
+for(int i=0; i<array[]; i++){
+if(!strcmp(l1 == l2){
+printf("Symmetric difference =",array1[],array2[])
+}
+else{
+break;
+}
+}
 Note:
 - You are not allowed to use language library function to solve the problem.
 - **Bonus**: Prepare space-time complexity analysis for your solution.
@@ -111,6 +139,57 @@ Write a function that takes a string as input and finds the character that occur
 Input: "Hello, world!"
 
 Expected output: Character: 'l', Occurrence: 3
+//solve the problem 
+#include <stdio.h>
+#include <wchar.h>
+#include <locale.h>
+#include <stdlib.h>
+
+#define MAX_CHARS 0x10FFFF // Maximum Unicode code point
+
+int main() {
+    setlocale(LC_ALL, ""); // Set locale to handle Unicode characters
+
+    wchar_t str[] = L"Hello, world!";
+    int max_count = 0;
+    int* char_count = calloc(MAX_CHARS, sizeof(int));
+    wchar_t* max_chars = malloc(MAX_CHARS * sizeof(wchar_t));
+    int max_chars_count = 0;
+
+    if (char_count == NULL || max_chars == NULL) {
+        printf("Memory allocation failed\n");
+        return 1;
+    }
+
+    for (int i = 0; str[i] != L'\0'; i++) {
+        if (iswalnum(str[i])) { // Check if the character is a letter or a number
+            char_count[str[i]]++;
+            if (char_count[str[i]] > max_count) {
+                max_count = char_count[str[i]];
+                max_chars_count = 1;
+                max_chars[0] = str[i];
+            } else if (char_count[str[i]] == max_count) {
+                max_chars[max_chars_count] = str[i];
+                max_chars_count++;
+            }
+        }
+    }
+
+    if (max_count == 0) {
+        printf("No characters found\n");
+    } else {
+        wprintf(L"Characters: ");
+        for (int i = 0; i < max_chars_count; i++) {
+            wprintf(L"%lc ", max_chars[i]);
+        }
+        wprintf(L"Occurrence: %d\n", max_count);
+    }
+
+    free(char_count);
+    free(max_chars);
+
+    return 0;
+}
 
 Note:
 - Consider case-sensitivity, so 'H' and 'h' are different characters.
@@ -120,8 +199,9 @@ Note:
 ### Problem 7 - Square Root
 
 Write a function that calculates and returns the square root of a non-negative integer `x`. You can safely assume `x` is a perfect square, such as 4, 9, 16, 25, 36, and so on.
+//solution
 int x = 0;
-printf
+printf("Square root of :", x/x);
 Note:
 - You are not allowed to use any built-in square root function or language library function to solve the problem.
 - **Bonus**: Prepare space-time complexity analysis for your solution.
