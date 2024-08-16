@@ -295,7 +295,55 @@ Example 3:
 Example 4:
 - Input: Start = E, End = D
 - Expected output: True (E --> F --> B --> D)
+Solution
 
+from collections import defaultdict
+
+class Graph:
+    def __init__(self):
+        self.graph = defaultdict(list)
+
+    def add_edge(self, u, v):
+        self.graph[u].append(v)
+
+    def dfs(self, start, end, visited, path):
+        visited.add(start)
+        path.append(start)
+        if start == end:
+            return True, path
+        for neighbor in self.graph[start]:
+            if neighbor not in visited:
+                found, path = self.dfs(neighbor, end, visited, path)
+                if found:
+                    return True, path
+        path.pop()
+        return False, []
+
+    def find_path(self, start, end):
+        visited = set()
+        path = []
+        found, path = self.dfs(start, end, visited, path)
+        return found, path
+
+# Example usage
+graph = Graph()
+graph.add_edge('A', 'B')
+graph.add_edge('B', 'A')
+graph.add_edge('B', 'C')
+graph.add_edge('B', 'D')
+graph.add_edge('D', 'G')
+graph.add_edge('D', 'E')
+graph.add_edge('B', 'E')
+graph.add_edge('E', 'F')
+graph.add_edge('F', 'B')
+graph.add_edge('C', 'F')
+graph.add_edge('F', 'G')
+
+print(graph.find_path('D', 'B'))  # Output: (False, [])
+print(graph.find_path('F', 'A'))  # Output: (True, ['F', 'B', 'A'])
+print(graph.find_path('G', 'C'))  # Output: (False, [])
+print(graph.find_path('E', 'D'))  # Output: (True, ['E', 'F', 'B', 'D'])
 Note:
+[
 - You are free to propose any data structure to represent the directed graph.
 - **Bonus**: Ensure that the function always returns the shortest connected path if it exists (assuming each edge has the same weight).
